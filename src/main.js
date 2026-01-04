@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.css'
+import '@/styles/common.scss'
 
 import { getCategory } from '@/apis/testAPI'
 getCategory().then(res => {
