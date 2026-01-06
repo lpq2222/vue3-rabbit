@@ -4,13 +4,7 @@
             <h1 class="logo">
                 <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
-            <!-- <HeaderNav /> -->
-            <ul class="app-header-nav">
-                <li class="home" v-for="item in categoryList" :key="item.id">
-                    <RouterLink to="/">{{ item.name }}</RouterLink>
-                </li>
-                
-            </ul>
+            <HeaderNav />
             <div class="search">
                 <i class="iconfont icon-search"></i>
                 <input type="text" placeholder="搜一搜">
@@ -22,21 +16,10 @@
 </template>
 
 <script setup lang="js">
-// import HeaderNav from './HeaderNav.vue';
+import HeaderNav from './HeaderNav.vue';
 // import HeaderCart from '@/views/Layout/components/LayoutCart.vue';
-import { getCategoryAPI } from '@/apis/layout';
-import { ref, onMounted } from 'vue';
 
-const categoryList = ref([])
-const getCategory =async () => {
-    const res = await getCategoryAPI()
-    console.log(res);
-    categoryList.value = res.result
-}
 
-onMounted(()=>{
-    getCategory()
-})
 </script>
 
 <style scoped lang="scss">
