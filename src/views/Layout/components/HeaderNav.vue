@@ -1,24 +1,21 @@
 ﻿<template>
   <ul class="app-header-nav">
-    <li class="home"><a href="/">首页</a></li>
+    <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <li class="home" v-for="item in categoryList" :key="item.id">
-      <a :href="`/category/${item.id}`" class="nav-link">{{ item.name }}</a>
+      <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
     </li>
   </ul>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script setup lang="js">
+import { useCategoryStore } from '@/stores/categoryStore.js';
+import { storeToRefs } from 'pinia';
 
-// 静态数据，无需 store
-const categoryList = ref([
-  { id: 1, name: '居家' },
-  { id: 2, name: '美食' },
-  { id: 3, name: '服饰' },
-]);
+const categoryStore = useCategoryStore();
+const { categoryList } = storeToRefs(categoryStore);
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .app-header-nav {
   width: 820px;
   display: flex;
@@ -41,6 +38,11 @@ const categoryList = ref([
         color: $xtxColor;
         border-bottom: 1px solid $xtxColor;
       }
+    }
+
+    .active {
+      color: $xtxColor;
+      border-bottom: 1px solid $xtxColor;
     }
   }
 }

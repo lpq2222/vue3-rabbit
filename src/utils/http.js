@@ -5,10 +5,12 @@ const httpInstance = axios.create({
     timeout: 5000
 })
 
+//axios请求拦截器
 httpInstance.interceptors.request.use(config => {
     return config
-}, r => Promise.reject(e))
+}, e => Promise.reject(e))
 
+//axios响应式拦截器
 httpInstance.interceptors.response.use(res => res.data, e => {
     return Promise.reject(e)
 })
