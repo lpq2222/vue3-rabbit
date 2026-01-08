@@ -2,7 +2,7 @@
 import HomePanel from './HomePanel.vue';
 import { onMounted, ref } from 'vue';
 import { getGoodsAPI } from '@/apis/home.js';
-// import GoodsItem from '@/views/Home/components/GoodsItem.vue';
+import GoodsItem from '@/views/Home/components/GoodsItem.vue';
 // import { ProductResult } from '@/apis/model/homeModel.js';
 
 const goodsProduct = ref([]);
@@ -27,7 +27,7 @@ onMounted(() => getGoods());
         </RouterLink>
         <ul class="goods-list">
           <li v-for="good in cate.goods" :key="good.id">
-            <GoodsItem :good="good" />
+            <GoodsItem :goods="good" />
           </li>
         </ul>
       </div>
