@@ -14,3 +14,8 @@ export function getNewApi() {
 export function getHotApi() {
   return httpInstance({ url: '/home/hot' });
 }
+
+//获取所有商品模块
+export function getGoodsAPI() {
+  return httpInstance({ url: '/home/goods' });
+}
