@@ -1,5 +1,5 @@
 ﻿<script setup lang="js">
-// import { onBeforeRouteUpdate } from 'vue-router';
+import { onBeforeRouteUpdate } from 'vue-router';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue';
 import { getCategoryAPI } from '@/apis/category';
 import { useRoute } from 'vue-router';
@@ -14,10 +14,11 @@ import { getBannerAPI } from '@/apis/home';
 // 获取轮播图
 // const { bannerList } = useBanner();
 
+//获取数据
 const categoryData = ref({})
 const route = useRoute()
-const getCategory = async () => {
-  const res = await getCategoryAPI(route.params.id)
+const getCategory = async (id=route.params.id) => {
+  const res = await getCategoryAPI(id)
   categoryData.value = res.result
 }
 onMounted(() => getCategory())
@@ -36,7 +37,7 @@ onMounted(() => {
   getBanner();
 });
 
-// onBeforeRouteUpdate((to) => getCategory(to.params.id as string));
+onBeforeRouteUpdate((to) => getCategory(to.params.id));
 
 </script>
 
