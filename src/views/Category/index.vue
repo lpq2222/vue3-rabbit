@@ -3,7 +3,9 @@
 // import GoodsItem from '@/views/Home/components/GoodsItem.vue';
 import { getCategoryAPI } from '@/apis/category';
 import { useRoute } from 'vue-router';
-import { onMounted,ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { getBannerAPI } from '@/apis/home';
+
 // import { useBanner } from '@/views/Category/composables/useBanner.js';
 // import { useCategory } from '@/views/Category/composables/useCategory.js';
 
@@ -18,8 +20,21 @@ const getCategory = async () => {
   const res = await getCategoryAPI(route.params.id)
   categoryData.value = res.result
 }
-onMounted(()=>getCategory())
+onMounted(() => getCategory())
 
+//获取banner
+const bannerList = ref([]);
+
+const getBanner = async () => {
+  const res = await getBannerAPI({
+    distributionSite: '2'
+  });
+  bannerList.value = res.result;
+};
+
+onMounted(() => {
+  getBanner();
+});
 // onBeforeRouteUpdate((to) => getCategory(to.params.id as string));
 </script>
 
@@ -34,13 +49,13 @@ onMounted(()=>getCategory())
         </el-breadcrumb>
       </div>
       <!-- 轮播图-->
-      <!-- <div class="home-banner">
+      <div class="home-banner">
         <el-carousel height="500px">
           <el-carousel-item v-for="item in bannerList" :key="item.id">
             <img :src="item.imgUrl" alt="" />
           </el-carousel-item>
         </el-carousel>
-      </div> -->
+      </div>
       <!-- 全部分类-->
       <!-- <div class="sub-list">
         <h3>全部分类</h3>
