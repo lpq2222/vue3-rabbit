@@ -3,7 +3,6 @@ defineProps({
     goods: {
         type: Object,
         default: () => {
-
         }
     }
 })
