@@ -1,43 +1,13 @@
 ﻿<script setup lang="js">
-import { onBeforeRouteUpdate } from 'vue-router';
-import GoodsItem from '@/views/Home/components/GoodsItem.vue';
-import { getCategoryAPI } from '@/apis/category';
-import { useRoute } from 'vue-router';
-import { onMounted, ref } from 'vue';
-import { getBannerAPI } from '@/apis/home';
 
-// import { useBanner } from '@/views/Category/composables/useBanner.js';
-// import { useCategory } from '@/views/Category/composables/useCategory.js';
+import GoodsItem from '@/views/Home/components/GoodsItem.vue';
+import { useBanner } from './composables/useBanner.js';
+import { useCategory } from './composables/useCategory.js';
 
 // 获取页面数据
-// const { categoryData, getCategory } = useCategory();
-// 获取轮播图
-// const { bannerList } = useBanner();
-
-//获取数据
-const categoryData = ref({})
-const route = useRoute()
-const getCategory = async (id=route.params.id) => {
-  const res = await getCategoryAPI(id)
-  categoryData.value = res.result
-}
-onMounted(() => getCategory())
-
-//获取banner
-const bannerList = ref([]);
-
-const getBanner = async () => {
-  const res = await getBannerAPI({
-    distributionSite: '2'
-  });
-  bannerList.value = res.result;
-};
-
-onMounted(() => {
-  getBanner();
-});
-
-onBeforeRouteUpdate((to) => getCategory(to.params.id));
+const { categoryData } = useCategory();
+//获取轮播图
+const { bannerList } = useBanner();
 
 </script>
 
