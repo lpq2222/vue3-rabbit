@@ -32,21 +32,21 @@ const getGoodList = async () => {
 };
 onMounted(() => getGoodList());
 
-// const tabChange = () => {
-//   reqData.value.page = 1;
-//   getGoodList();
-// };
+const tabChange = () => {
+  reqData.value.page = 1;
+  getGoodList();
+};
 
 // 加载更多
-// const load = async () => {
-//   reqData.value.page++;
-//   const res = await getSubCategoryAPI(reqData.value);
-//   goodList.value = [...goodList.value, ...res.result.items];
-//   if (res.result.items.length === 0) {
-//     disabled.value = true;
-//     return;
-//   }
-// };
+const load = async () => {
+  reqData.value.page++;
+  const res = await getSubCategoryAPI(reqData.value);
+  goodList.value = [...goodList.value, ...res.result.items];
+  if (res.result.items.length === 0) {
+    disabled.value = true;
+    return;
+  }
+};
 </script>
 
 <template>
