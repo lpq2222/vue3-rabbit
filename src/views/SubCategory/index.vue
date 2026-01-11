@@ -1,5 +1,5 @@
 ﻿<script setup lang="js">
-// import { getCategoryFilterAPI, getSubCategoryAPI } from '@/apis/category.js';
+import { getCategoryFilterAPI } from '@/apis/category.js';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue';
@@ -8,11 +8,11 @@ import GoodsItem from '@/views/Home/components/GoodsItem.vue';
 const route = useRoute();
 
 const categoryData = ref({});
-// const getCategoryData = async () => {
-//   const res = await getCategoryFilterAPI(route.params.id);
-//   categoryData.value = res.result;
-// };
-// onMounted(() => getCategoryData());
+const getCategoryData = async () => {
+  const res = await getCategoryFilterAPI(route.params.id);
+  categoryData.value = res.result;
+};
+onMounted(() => getCategoryData());
 
 // 获取基础列表数据
 const goodList = ref([]);
