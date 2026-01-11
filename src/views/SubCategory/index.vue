@@ -1,5 +1,5 @@
 ﻿<script setup lang="js">
-import { getCategoryFilterAPI } from '@/apis/category.js';
+import { getCategoryFilterAPI,getSubCategoryAPI } from '@/apis/category.js';
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import GoodsItem from '@/views/Home/components/GoodsItem.vue';
@@ -26,11 +26,11 @@ const reqData = ref({
   sortField
 });
 // 请求数据函数
-// const getGoodList = async () => {
-//   const res = await getSubCategoryAPI(reqData.value);
-//   goodList.value = res.result.items;
-// };
-// onMounted(() => getGoodList());
+const getGoodList = async () => {
+  const res = await getSubCategoryAPI(reqData.value);
+  goodList.value = res.result.items;
+};
+onMounted(() => getGoodList());
 
 // const tabChange = () => {
 //   reqData.value.page = 1;
@@ -69,7 +69,7 @@ const reqData = ref({
       </el-tabs>
       <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
         <!-- 商品列表-->
-        <GoodsItem v-for="good in goodList" :good="good" :key="good.id"></GoodsItem>
+        <GoodsItem v-for="good in goodList" :goods="good" :key="good.id"></GoodsItem>
       </div>
     </div>
   </div>
