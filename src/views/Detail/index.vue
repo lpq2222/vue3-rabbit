@@ -4,7 +4,8 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import DetailHot from '@/views/Detail/components/DetailHot.vue';
 import ImageView from '@/components/ImageView/index.vue'
-import { ElMessage } from 'element-plus';
+import XtxSku from '@/components/XtxSku/index.vue'
+// import { ElMessage } from 'element-plus';
 // import { useCartStore } from '@/stores/cartStore.js';
 
 import { getDetail } from '@/apis/detail.js';
@@ -17,13 +18,13 @@ const getGoods = async () => {
 };
 onMounted(() => getGoods());
 
-// //  sku操作函数
-// let skuObj = {};
-// const changeSku = (sku) => {
-//   skuObj = sku;
-// };
-// // 数量count操作
-// const count = ref(0);
+//  sku操作函数
+let skuObj = {};
+const changeSku = (sku) => {
+  skuObj = sku;
+};
+// 数量count操作
+const count = ref(0);
 
 // // 添加购物车
 // const cartStore = useCartStore();
