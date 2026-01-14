@@ -3,8 +3,6 @@
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import DetailHot from '@/views/Detail/components/DetailHot.vue';
-import ImageView from '@/components/ImageView/index.vue'
-import XtxSku from '@/components/XtxSku/index.vue'
 // import { ElMessage } from 'element-plus';
 // import { useCartStore } from '@/stores/cartStore.js';
 
@@ -19,9 +17,9 @@ const getGoods = async () => {
 onMounted(() => getGoods());
 
 //  sku操作函数
-let skuObj = {};
+let skuObj = ref({});
 const changeSku = (sku) => {
-  skuObj = sku;
+  skuObj.value = sku;
 };
 // 数量count操作
 const count = ref(0);
@@ -68,7 +66,7 @@ const count = ref(0);
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImageView :imageList="goods.mainPictures" />
+              <XtxImageView :imageList="goods.mainPictures" />
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
