@@ -1,4 +1,9 @@
-﻿<template>
+﻿<script setup>
+import HeaderNav from './HeaderNav.vue';
+import HeaderCart from './HeaderCart.vue';
+</script>
+
+<template>
     <header class="app-header">
         <div class="container">
             <h1 class="logo">
@@ -10,17 +15,10 @@
                 <input type="text" placeholder="搜一搜">
             </div>
             <!-- 头部购物车 -->
-            <!-- <HeaderCart /> -->
+            <HeaderCart />
         </div>
     </header>
 </template>
-
-<script setup lang="js">
-import HeaderNav from './HeaderNav.vue';
-// import HeaderCart from '@/views/Layout/components/LayoutCart.vue';
-
-
-</script>
 
 <style scoped lang="scss">
 .app-header {

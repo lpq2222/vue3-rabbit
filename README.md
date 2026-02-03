@@ -1,44 +1,23 @@
-# vue3-rabbit
+# 小兔鲜儿 - 电商前端项目
 
-This template should help get you started developing with Vue 3 in Vite.
+这是一个基于 **Vue 3** 生态链开发的电商购物网站，实现了从首页展示、分类筛选、商品详情到购物车结算及支付的完整流程。
 
-## Recommended IDE Setup
+## 技术栈
+* **框架**: Vue 3 (Composition API)
+* **状态管理**: Pinia (集成持久化插件)
+* **路由**: Vue Router
+* **UI 组件库**: Element Plus
+* **网络请求**: Axios (封装了请求/响应拦截器)
+* **工具库**: @vueuse/core (实现图片懒加载、滚动吸顶等)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 已实现功能
+1.  **会员系统**: 登录校验、Token 持久化管理。
+2.  **购物车**: 支持登录与非登录状态下的本地/接口同步、单选/全选逻辑。
+3.  **结算支付**: 收货地址切换、订单创建、支付宝支付跳转及倒计时功能。
+4.  **分类系统**: 一级/二级分类列表切换，支持无限加载。
+5.  **商品详情**: SKU 规格算法选择、图片预览放大镜。
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## 项目运行
+1. 安装依赖: `npm install`
+2. 启动开发服务器: `npm run dev`
+3. 项目打包: `npm run build`

@@ -1,13 +1,13 @@
 ﻿<script setup lang="js">
-// import { GoodDetail, sku } from '@/api/model/detailModel.ts';
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import DetailHot from '@/views/Detail/components/DetailHot.vue';
-// import { ElMessage } from 'element-plus';
-// import { useCartStore } from '@/stores/cartStore.js';
+// import { GoodDetail, sku } from '@/api/model/detailModel.ts'
+import DetailHot from '@/views/Detail/components/DetailHot.vue'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
-import { getDetail } from '@/apis/detail.js';
-// import { CartItem } from '@/api/model/cartModel.js';
+import { getDetail } from '@/apis/detail.js'
+import { ElMessage } from 'element-plus'
+// import { CartItem } from '@/api/model/cartModel.js'
+import { useCartStore } from '@/stores/cartStore.js'
 const goods = ref({});
 const route = useRoute();
 const getGoods = async () => {
@@ -22,26 +22,28 @@ const changeSku = (sku) => {
   skuObj.value = sku;
 };
 // 数量count操作
-const count = ref(0);
+const count = ref(1);
 
-// // 添加购物车
-// const cartStore = useCartStore();
-// const addCart = () => {
-//   if (skuObj.skuId) {
-//     // 规则已选择，触发action
-//     cartStore.addCart({
-//       ...goods.value,
-//       count: count.value,
-//       picture: goods.value.mainPictures[0],
-//       skuId: skuObj.skuId,
-//       attrsText: skuObj.specsText,
-//       selected: true
-//     } as CartItem);
-//   } else {
-//     // 规则没有选择，提示用户
-//     ElMessage.warning('请选择规格');
-//   }
-// };
+// 添加购物车
+const cartStore = useCartStore();
+const addCart = () => {
+  if (skuObj.value.skuId) {
+    //规则已经选择 触发action
+    cartStore.addCart({
+      id:goods.value.id,
+      name:goods.value.name,
+      picture:goods.value.mainPictures[0],
+      price:goods.value.price,
+      count:count.value,
+      skuId:skuObj.value.skuId,
+      attrsText:skuObj.value.specsText,
+      selected:true
+    })
+  }else {
+    //规格没有选择 提示用户
+    ElMessage.warning("请选择规格")
+  }
+};
 </script>
 
 <template>
